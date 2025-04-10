@@ -46,7 +46,8 @@ static const uint WINZIP_PBKDF2_ROUNDS = 1000;
 		uint8_t* headerSalt = header;
 		uint16_t* headerVerifier = (uint16_t*)(header + saltLength);
 		
-		uint8_t derivedKeyMacVerifier[keyMacVerifierLength];
+		NSMutableData *data = [NSMutableData dataWithLength:keyMacVerifierLength];
+		uint8_t* derivedKeyMacVerifier = (uint8_t *)data.mutableBytes;
 		uint8_t* derivedKey = derivedKeyMacVerifier;
 		uint16_t* derivedVerifier = (uint16_t*)(derivedKeyMacVerifier + keyLength + macLength);
 		
